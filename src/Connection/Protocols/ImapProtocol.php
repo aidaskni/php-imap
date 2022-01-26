@@ -679,7 +679,7 @@ class ImapProtocol extends Protocol {
      */
     public function getUid($id = null) {
         try {
-            $uids = $this->fetch('UID', 1, INF);
+            $uids = $this->fetch('UID', 1, INF, null);
             if ($id == null) {
                 return $uids;
             }
