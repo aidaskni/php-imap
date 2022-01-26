@@ -376,7 +376,8 @@ class Folder {
                     $connection->done();
 
                     $this->client->openFolder($this->path, true);
-                    $message = $this->query()->getMessageByMsgn($msgn);
+                    //get only message header for faster response
+                    $message = $this->query()->setFetchBody(false)->setFetchFlags(false)->getMessageByMsgn($msgn);
                     $message->setSequence($sequence);
                     $callback($message);
 
